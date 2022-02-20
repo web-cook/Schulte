@@ -38,7 +38,6 @@ start.addEventListener('click', game)
 //игра
 function game() {
     count = 1;
-    start.textContent = 'Стоп';
     wrapper.style.display = 'none';
     pastSec = 0;
     pastMsec = 0;
@@ -73,9 +72,9 @@ function timer() {
         pastSec++;
     }
 
-    start.addEventListener('click', function () {
+    stop.addEventListener('click', function () {
         clearTimeout(timerId);
-        start.textContent = 'Старт';
+        wrapper.style.display = 'flex';
         seconds.textContent = '00';
         milliseconds.textContent = '00';
         clearArray();
@@ -92,7 +91,6 @@ function timer() {
 
     if(count === 26) {
         clearTimeout(timerId);
-        start.textContent = 'Старт';
         start.addEventListener('click', game)
     }
 
