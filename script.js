@@ -13,6 +13,8 @@ let resultsClose = document.querySelector('.results__close');
 let resultsList = document.querySelector('.results__list');
 let stop = document.querySelector('.stop-button');
 
+
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -115,18 +117,18 @@ resultsClose.addEventListener('click', () => {
 })
 
 function showResults() {
-    console.log(resultsWrapper.clientWidth);
     it += 10;
     resultsWrapper.style.width = `${it}px`;
-    if(resultsWrapper.clientWidth >= 498) {
-        resultsWrapper.style.width = '498px';
+    if(resultsWrapper.clientWidth >= field.clientWidth) {
+        resultsWrapper.style.width = `${field.clientWidth}px`;
         resultsTitle.style.visibility = 'visible';
         resultsClose.style.visibility = 'visible';
         resultsList.style.visibility = 'visible';
+        console.log(field.clientWidth);
         console.log(resultsWrapper.clientWidth);
         return;
     }
-    setTimeout(showResults, 10); 
+    setTimeout(showResults, 5); 
 }
 
 function hideResults() {
@@ -142,7 +144,7 @@ function hideResults() {
         console.log(resultsWrapper.clientWidth);
         return;
     }
-    setTimeout(hideResults, 10); 
+    setTimeout(hideResults, 5); 
 }
 
 // console.log(resultsWrapper.style.width);
