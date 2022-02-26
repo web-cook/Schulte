@@ -7,6 +7,10 @@ let milliseconds = document.querySelector('.timer__milliseconds');
 let start = document.querySelector('.start-button');
 let wrapper = document.querySelector('.button__wrapper');
 let results = document.querySelector('.results');
+let resultsWrapper = document.querySelector('.results__wrapper');
+let resultsTitle = document.querySelector('.results__title');
+let resultsClose = document.querySelector('.results__close');
+let resultsList = document.querySelector('.results__list');
 let stop = document.querySelector('.stop-button');
 
 function getRandomInt(max) {
@@ -90,9 +94,58 @@ function timer() {
     })
 
     if(count === 26) {
+        resultsList.innerHTML += `<li>${seconds.textContent}:${milliseconds.textContent}</li>`;
         clearTimeout(timerId);
         start.addEventListener('click', game)
     }
 
     let timerId = setTimeout(timer, 10);
 }
+
+// список результатов
+
+let it = 0;
+
+results.addEventListener('click', () => {
+    showResults();
+})
+
+resultsClose.addEventListener('click', () => {
+    hideResults();
+})
+
+function showResults() {
+    console.log(resultsWrapper.clientWidth);
+    it += 10;
+    resultsWrapper.style.width = `${it}px`;
+    if(resultsWrapper.clientWidth >= 498) {
+        resultsWrapper.style.width = '498px';
+        resultsTitle.style.visibility = 'visible';
+        resultsClose.style.visibility = 'visible';
+        resultsList.style.visibility = 'visible';
+        console.log(resultsWrapper.clientWidth);
+        return;
+    }
+    setTimeout(showResults, 10); 
+}
+
+function hideResults() {
+    if(resultsTitle.style.visibility === 'visible') {
+        resultsTitle.style.visibility = 'hidden';
+        resultsClose.style.visibility = 'hidden';
+        resultsList.style.visibility = 'hidden';
+    }
+    it -= 10;
+    resultsWrapper.style.width = `${it}px`;
+    if(resultsWrapper.clientWidth <= 0) {
+        resultsWrapper.style.width = '0px';
+        console.log(resultsWrapper.clientWidth);
+        return;
+    }
+    setTimeout(hideResults, 10); 
+}
+
+// console.log(resultsWrapper.style.width);
+
+// console.log(typeof resultsWrapper.style.width);
+// console.log(typeof +resultsWrapper.style.width);
