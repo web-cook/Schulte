@@ -2,14 +2,19 @@ body {
     background-color: #fafafa;
 }
 
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #363636;
+}
+
 .container {
-    max-width: 1280px;
-    padding: 0 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #363636;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .description {

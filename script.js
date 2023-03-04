@@ -13,8 +13,6 @@ let resultsClose = document.querySelector('.results__close');
 let resultsList = document.querySelector('.results__list');
 let stop = document.querySelector('.stop-button');
 
-
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
