@@ -4,14 +4,18 @@ let numbers = [];//массив для чисел
 let num;//переменная для хранения случайного числа из массива
 let seconds = document.querySelector('.timer__seconds');
 let milliseconds = document.querySelector('.timer__milliseconds');
-let start = document.querySelector('.start-button');
+let start = document.querySelector('#start-button');
 let wrapper = document.querySelector('.button__wrapper');
-let results = document.querySelector('.results');
-let resultsWrapper = document.querySelector('.results__wrapper');
+let results = document.querySelector('#results-button');
+let resultsWrapper = document.querySelector('.results');
 let resultsTitle = document.querySelector('.results__title');
 let resultsClose = document.querySelector('.results__close');
 let resultsList = document.querySelector('.results__list');
-let stop = document.querySelector('.stop-button');
+let stop = document.querySelector('#stop-button');
+let resultsOpen = false;
+let timerStart = false;
+
+console.log(start);
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -41,6 +45,7 @@ start.addEventListener('click', game)
 
 //игра
 function game() {
+    stop.style.display = 'block';
     count = 1;
     wrapper.style.display = 'none';
     pastSec = 0;
@@ -57,6 +62,8 @@ let pastSec = 0;//начальные значения таймера
 let pastMsec = 0;
 
 function timer() {
+  let timerId = setTimeout(timer, 10);
+
     if(pastSec < 10) {
         seconds.textContent = `0${pastSec}`;
     } else {
@@ -82,6 +89,7 @@ function timer() {
         seconds.textContent = '00';
         milliseconds.textContent = '00';
         clearArray();
+        stop.style.display = 'none';
         start.addEventListener('click', game);
     })
 
@@ -98,8 +106,6 @@ function timer() {
         clearTimeout(timerId);
         start.addEventListener('click', game)
     }
-
-    let timerId = setTimeout(timer, 10);
 }
 
 // список результатов
@@ -107,7 +113,12 @@ function timer() {
 let it = 0;
 
 results.addEventListener('click', () => {
+  if(!resultsOpen) {
     showResults();
+  } else {
+    hideResults();
+  }
+  resultsOpen = !resultsOpen;
 })
 
 resultsClose.addEventListener('click', () => {
@@ -120,7 +131,7 @@ function showResults() {
     if(resultsWrapper.clientWidth >= field.clientWidth) {
         resultsWrapper.style.width = `${field.clientWidth}px`;
         resultsTitle.style.visibility = 'visible';
-        resultsClose.style.visibility = 'visible';
+        resultsClose.style.display = 'block';
         resultsList.style.visibility = 'visible';
         console.log(field.clientWidth);
         console.log(resultsWrapper.clientWidth);
@@ -132,7 +143,7 @@ function showResults() {
 function hideResults() {
     if(resultsTitle.style.visibility === 'visible') {
         resultsTitle.style.visibility = 'hidden';
-        resultsClose.style.visibility = 'hidden';
+        resultsClose.style.display = 'none';
         resultsList.style.visibility = 'hidden';
     }
     it -= 10;
