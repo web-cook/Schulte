@@ -6,65 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="nullstyle.css">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
 </head>
 <body>
     <div class="wrapper">
       <div class="container">
-          <section class="description">
-              <h1 class="description__title">Таблица Шульте</h1>
-              <div class="description__control">
-                  <div class="results">
-                      <p class="results__line"></p>
-                  </div>
-                  <div class="description__timer">
-                      <em class="timer__seconds">00</em>
-                      :
-                      <em class="timer__milliseconds">00</em>
-                  </div>
-                  <button class="stop-button">X</button>
-              </div>
-          </section>
-          <section class="field">
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="field__cell"></div>
-              <div class="button__wrapper">
-                  <button class="start-button">Старт</button>
-              </div>
-              <div class="results__wrapper">
-                  <h2 class="results__title">Результаты</h2>
-                  <p class="results__close">X</p>
-                  <ul class="results__list"></ul>
-              </div>
-          </section>
+          <div class="app">
+            <section class="description">
+                <h1 class="description__title">Таблица Шульте</h1>
+                <div class="description__control">
+                    <div class="results">
+                        <p class="results__line"></p>
+                    </div>
+                    <div class="description__timer">
+                        <em class="timer__seconds">00</em>
+                        :
+                        <em class="timer__milliseconds">00</em>
+                    </div>
+                    <button class="stop-button">X</button>
+                </div>
+            </section>
+            <section class="field">
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="field__cell"></div>
+                <div class="button__wrapper">
+                    <button class="start-button">Старт</button>
+                </div>
+                <div class="results__wrapper">
+                    <h2 class="results__title">Результаты</h2>
+                    <p class="results__close">X</p>
+                    <ul class="results__list"></ul>
+                </div>
+            </section>
+          </div>
           <div class="footer__copyright">
               <span>Developed by <a href="https://github.com/web-cook">web-cook</a></span>
-              <span>&copy2022 All rights reserved </span>
+              <span>&copy<script>document.write(new Date().getFullYear())</script> All rights reserved </span>
           </div>
       </div>
     </div>
