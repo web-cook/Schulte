@@ -116,6 +116,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.5vw;
   color: #ccd6f6;
+  text-transform: uppercase;
 }
 .description__control {
   margin-bottom: 20px;
@@ -264,10 +265,10 @@ body {
 
 .field {
   position: relative;
-  box-sizing: border-box;
+  box-sizing: content-box;
   width: 500px;
   height: 500px;
-  border: 1px #ccd6f6 solid;
+  border: 5px #ccd6f6 solid;
   display: grid;
   grid-template-columns: repeat(5, 100px);
   grid-template-rows: repeat(5, 100px);
@@ -327,6 +328,15 @@ body {
 }
 .footer__copyright {
   margin: 10px 0;
+}
+
+@media (max-width: 480px) {
+  .description__title {
+    font-size: 24px;
+  }
+  .main-button {
+    font-size: 20px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
