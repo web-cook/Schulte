@@ -24,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .description {
@@ -97,6 +98,7 @@ body {
   height: 100%;
   background-color: #112240;
   overflow-y: scroll;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     width: 1em;
@@ -284,6 +286,89 @@ body {
   &__copyright {
     margin: 10px 0;
   }
+}
+
+.help {
+  padding: 10px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0) translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: #112240;
+  border: 3px #ccd6f6 solid;
+  transition: all 0.5s;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 1em;
+  }
+  
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: #64ffda;
+    outline: 1px solid slategrey;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #ccd6f6;
+    text-indent: 20px;
+    text-align: left;
+    text-decoration: underline;
+  }
+
+  &__text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #ccd6f6;
+    text-indent: 20px;
+    text-align: left;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__close {
+    padding: 5px;
+    position: absolute;
+    top: 25px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ccd6f6;
+    cursor: pointer;
+    color: #ccd6f6;
+    z-index: 100;
+
+    &-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+
+    &:hover {
+      color: #64ffda;
+      border-color: #64ffda;
+    }
+  }
+}
+
+._active {
+  opacity: 1;
+  transform: scale(1) translate(-50%, -50%);
 }
 
 @media (max-width: 480px) {

@@ -9,13 +9,17 @@ const cells = document.querySelectorAll('.field__cell'), //список ячее
   resultsTitle = document.querySelector('.results__title'),
   resultsClose = document.querySelector('.results__close'),
   resultsList = document.querySelector('.results__list'),
-  stop = document.querySelector('#stop-button');
+  stop = document.querySelector('#stop-button'),
+  help = document.querySelector('#modal-help'),
+  helpButton = document.querySelector('#help-button'),
+  helpClose = document.querySelector('.help__close');
 
 let numbers = [], //массив для чисел
     num, //переменная для хранения случайного числа из массива
     resultsOpen = false,
     timerStart = false,
-    gameIsOn = false;
+    gameIsOn = false,
+    helpIsOpen = false;
 
 //сохранение результатов в LocalStorage
 const keyName = 'schulte';
@@ -206,6 +210,10 @@ results.addEventListener('click', () => {
   } else {
     hideResults();
   }
+
+  if(helpIsOpen) {
+    modalHelp();
+  }
 })
 
 resultsClose.addEventListener('click', () => {
@@ -248,4 +256,23 @@ function hideResults() {
 
 function clearResultList() {
   resultsList.innerHTML = '';
+}
+
+//подсказка
+helpButton.addEventListener('click', () => {
+  modalHelp();
+})
+
+helpClose.addEventListener('click', () => {
+  modalHelp();
+})
+
+function modalHelp() {
+  if(!helpIsOpen && !gameIsOn) {
+    help.classList.add('_active');
+    helpIsOpen = true;
+  } else {
+    help.classList.remove('_active');
+    helpIsOpen = false;
+  }
 }
