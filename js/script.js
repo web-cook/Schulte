@@ -196,7 +196,7 @@ function timer() {
     setTimeout(() => {
       showResults();
       clearTimer();
-    }, 1000)
+    }, 500)
   }
 }
 
