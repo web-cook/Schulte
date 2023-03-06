@@ -19,7 +19,9 @@ let numbers = [], //массив для чисел
     resultsOpen = false,
     timerStart = false,
     gameIsOn = false,
-    helpIsOpen = false;
+    helpIsOpen = false,
+    wrapperIsActive = true,
+    stopClicked = false;
 
 //сохранение результатов в LocalStorage
 const keyName = 'schulte';
@@ -124,14 +126,27 @@ start.addEventListener('click', game)
 
 //игра
 function game() {
+  stopClicked = false;
   gameIsOn = true;
   stop.style.display = 'block';
   count = 1;
-  wrapper.style.display = 'none';
+  switchStartScreen();
   clearTimer();
   fillArray();
   timer();
   start.removeEventListener('click', game);
+}
+
+function switchStartScreen() {
+  if(wrapperIsActive) {
+    wrapper.style.display = 'none';
+    wrapperIsActive = false;
+  } else {
+    wrapper.style.display = 'flex';
+    wrapperIsActive = true;
+  }
+
+  console.log(wrapperIsActive);
 }
 
 //таймер
@@ -146,6 +161,20 @@ function clearTimer() {
   seconds.textContent = '00';
   milliseconds.textContent = '00';
 }
+
+let stopListenerCalls = 0;
+
+stop.addEventListener('click', function () {
+  stopClicked = true;
+  stopListenerCalls++;
+  gameIsOn = false;
+  switchStartScreen();
+  clearTimer();
+  clearArray();
+  stop.style.display = 'none';
+  start.addEventListener('click', game);
+  console.log(stopListenerCalls);
+})
 
 function timer() {
   let timerId = setTimeout(timer, 10);
@@ -169,21 +198,14 @@ function timer() {
     pastSec++;
   }
 
-  stop.addEventListener('click', function () {
-    gameIsOn = false;
+  if(stopClicked) {
     clearTimeout(timerId);
-    wrapper.style.display = 'flex';
-    clearTimer();
-    clearArray();
-    stop.style.display = 'none';
-    start.addEventListener('click', game);
-  })
+  }
 
   field.addEventListener('click', function (e) {
     if (e.target.textContent == count) {
       e.target.textContent = '';
       count++;
-
     }
   })
 
@@ -220,6 +242,12 @@ resultsClose.addEventListener('click', () => {
   hideResults();
 })
 
+function stopHidden() {
+  if(!stopClicked && !gameIsOn) {
+    stop.style.display = 'none';
+  }
+}
+
 function showResults() {
   resultsOpen = true;
   it += 10;
@@ -233,7 +261,17 @@ function showResults() {
 
     return;
   }
+  showCycle().then(stopHidden);
+}
+
+async function showCycle() {
   setTimeout(showResults, 5);
+}
+
+function startShow() {
+  if(!wrapperIsActive && !gameIsOn) {
+    switchStartScreen();
+  }
 }
 
 function hideResults() {
@@ -251,6 +289,10 @@ function hideResults() {
 
     return;
   }
+  hideCycle().then(startShow);
+}
+
+async function hideCycle() {
   setTimeout(hideResults, 5);
 }
 
