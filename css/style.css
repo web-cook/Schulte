@@ -197,7 +197,7 @@ body {
   overflow-x: hidden;
 }
 .results::-webkit-scrollbar {
-  width: 1em;
+  width: 0.5em;
 }
 .results::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -366,7 +366,7 @@ body {
   overflow-x: hidden;
 }
 .help::-webkit-scrollbar {
-  width: 1em;
+  width: 0.5em;
 }
 .help::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
