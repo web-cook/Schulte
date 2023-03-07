@@ -48,14 +48,9 @@ function storageSetData() {
 }
 
 function storageGetData() {
-  let key = keyName;
-  let previousData = localStorage.getItem(key);
-
+  let previousData = localStorage.getItem(keyName);
   let previousDataObj = JSON.parse(previousData);
-
-
   games.gameId = previousDataObj.gameId;
-
 }
 
 let result = 0;
@@ -257,8 +252,6 @@ function showResults() {
     resultsTitle.style.visibility = 'visible';
     resultsClose.style.display = 'block';
     resultsList.style.visibility = 'visible';
-
-
     return;
   }
   showCycle().then(stopHidden);
@@ -286,7 +279,6 @@ function hideResults() {
   resultsWrapper.style.width = `${it}px`;
   if (resultsWrapper.clientWidth <= 0) {
     resultsWrapper.style.width = '0px';
-
     return;
   }
   hideCycle().then(startShow);
